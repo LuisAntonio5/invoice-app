@@ -1,0 +1,88 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Nest Collective Invoices</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="heading">
+        <h1>Nest Collective Invoices</h1>
+      </div>
+
+      <div class="container">
+        <div class="item">
+        <form action="." method="GET">
+          <input id="search_button"type="text" name="search_bar" placeholder="search...">
+          <input id="submit_button" type="submit" value = "Search">
+        </form>
+        </div>
+        <form action="." method="POST" novalidate>
+          {% csrf_token %}
+          <h2 id="entry">Title</h2>
+          <div class="item">
+            <label for="id_title"></label>
+            {{ form.title.errors }}
+            {{ form.title }}
+          </div>
+          <h2 id="entry">Value</h2>
+          <div class="item">
+            <label for="id_value"></label>
+            {{ form.value.errors }}
+            {{ form.value }}
+          </div>
+          <h2 id="entry">From</h2>
+            <div class="item">
+            <label for="id_fromm"></label>
+            {{ form.fromm.errors }}
+            {{ form.fromm }}
+          </div>
+          <h2 id="entry">To</h2>
+          <div class="item">
+            <label for="id_to"></label>
+            {{ form.to.errors }}
+            {{ form.to }}
+          </div>
+          <div class="item">
+            <input id="submit_button" type="submit" value = "Create Invoice">
+          </div>
+        </form>
+      </div>
+      <div class="white">
+        <p>white</p>
+      </div>
+      {% if not invoices %}
+      <div class="container2">
+        <h1 id="entry"> No results... </h1>
+      </div>
+      {% else %}
+      {% for invoice in invoices %}
+      <div class="container2">
+        <h1 id="invoice_title">{{ invoice.title }}</h1>
+        <h1 id="entry">Value:</h1>
+        <div id="entry" class="item">
+          {{ invoice.value }}
+        </div>
+        <h1 id="entry">From:</h1>
+        <div id="entry" class="item">
+          {{ invoice.fromm }}
+        </div>
+        <h1 id="entry">To:</h1>
+        <div id="entry" class="item">
+          {{ invoice.to }}
+        </div>
+      </div>
+      <div class="white">
+        <p>white</p>
+      </div>
+      {% endfor %}
+      {% endif %}
+
+
+    </div>
+  </body>
+</html>

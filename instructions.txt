@@ -1,0 +1,12 @@
+1. Install the latest version of Python 
+2. Install the latest version of the Django framework
+3. Open the project on your IDE of choice.
+4. On ‘settings.py’, go to the line 62 and enter your computer’s full path to the templates directory .
+4. On ‘settings.py’, go to the line 56 and enter your computer’s full path to the static directory .
+5. On the terminal, enter the app directory, and after that enter the myapp directory.
+6. Run 'python manage.py makemigrations' (or 'py manage.py makemigrations' if your on Windows.)
+7. Run 'python manage.py migrate' (or 'py manage.py migrate' if your on Windows.)
+
+8. Run ‘python manage.py runserver’ on the terminal. (or 'py manage.py runserver' if your on Windows.)
+
+9. Visit http://127.0.0.1:8000/ in your browser of choice and enjoy the web platform :)
